@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {FontAwesome5} from '@expo/vector-icons'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
-import Account from './Account'
+import More from './More'
 import Finance from './Finance'
 import History from './History'
 import Home from './Home'
@@ -28,8 +28,8 @@ const TabScreen=(props)=> {
                 iconName = 'clock-outline'
                 size= focused ? 32 : 27
             }
-            else if (route.name=='Account'){
-                iconName = 'account'
+            else if (route.name=='More'){
+                iconName = 'dots-horizontal'
                 size= focused ? 32 : 27
             }
             else if (route.name=='Add'){
@@ -63,6 +63,9 @@ const TabScreen=(props)=> {
           tabBarOptions={{
             activeTintColor: '#ec1817',
             inactiveTintColor: 'gray',
+            style:{
+                height:'9.5%'
+            }
             // showLabel:false
           }}
         >
@@ -70,7 +73,7 @@ const TabScreen=(props)=> {
             <Tab.Screen name="Finance" component={Finance}/>
             <Tab.Screen name="Add" component={Home}/>
             <Tab.Screen name="History" component={History}/>
-            <Tab.Screen name="Account" component={Account}/>
+            <Tab.Screen name="More" component={More}/>
         </Tab.Navigator>
     )
 }

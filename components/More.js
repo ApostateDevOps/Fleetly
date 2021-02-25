@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-const Account=()=> {
+const More=()=> {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Account</Text>
+        <Text>More</Text>
       </View>
     );
 }
-export default Account
+export default More
