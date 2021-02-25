@@ -18,19 +18,19 @@ const TabScreen=(props)=> {
               let iconName;
               if (route.name == 'Home') {
                 iconName = 'garage'
-                size= focused ? 32 : 27
+                size= focused ? 31 : 27
             } 
             else if (route.name == 'Finance') {
                 iconName = 'finance'
-                size= focused ? 32 : 27
+                size= focused ? 31 : 27
             }
             else if (route.name=='History'){
                 iconName = 'clock-outline'
-                size= focused ? 32 : 27
+                size= focused ? 31 : 27
             }
             else if (route.name=='More'){
                 iconName = 'dots-horizontal'
-                size= focused ? 32 : 27
+                size= focused ? 31 : 27
             }
             else if (route.name=='Add'){
                 iconName='plus-circle'
