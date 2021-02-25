@@ -18,19 +18,19 @@ const TabScreen=(props)=> {
               let iconName;
               if (route.name == 'Home') {
                 iconName = 'garage'
-                size= focused ? 35 : 30
+                size= focused ? 32 : 27
             } 
             else if (route.name == 'Finance') {
                 iconName = 'finance'
-                size= focused ? 35 : 30
+                size= focused ? 32 : 27
             }
             else if (route.name=='History'){
                 iconName = 'clock-outline'
-                size= focused ? 35 : 30
+                size= focused ? 32 : 27
             }
             else if (route.name=='Account'){
                 iconName = 'account'
-                size= focused ? 35 : 30
+                size= focused ? 32 : 27
             }
             else if (route.name=='Add'){
                 iconName='plus-circle'
@@ -63,9 +63,6 @@ const TabScreen=(props)=> {
           tabBarOptions={{
             activeTintColor: '#ec1817',
             inactiveTintColor: 'gray',
-            style:{
-                height:'9%'
-            }
             // showLabel:false
           }}
         >
