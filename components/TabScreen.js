@@ -6,7 +6,7 @@ import {FontAwesome5} from '@expo/vector-icons'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import More from './More'
 import Finance from './Finance'
-import History from './History'
+import Activity from './Activity'
 import Home from './Home'
 const Tab=createBottomTabNavigator()
 
@@ -24,8 +24,8 @@ const TabScreen=(props)=> {
                 iconName = 'finance'
                 size= focused ? 31 : 27
             }
-            else if (route.name=='History'){
-                iconName = 'clock-outline'
+            else if (route.name=='Activity'){
+                iconName = 'bell'
                 size= focused ? 31 : 27
             }
             else if (route.name=='More'){
@@ -72,7 +72,7 @@ const TabScreen=(props)=> {
             <Tab.Screen name="Home" component={Home}/>
             <Tab.Screen name="Finance" component={Finance}/>
             <Tab.Screen name="Add" component={Home}/>
-            <Tab.Screen name="History" component={History}/>
+            <Tab.Screen name="Activity" component={Activity}/>
             <Tab.Screen name="More" component={More}/>
         </Tab.Navigator>
     )
