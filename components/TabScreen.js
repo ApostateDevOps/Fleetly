@@ -6,7 +6,7 @@ import {FontAwesome5} from '@expo/vector-icons'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import More from './More'
 import Finance from './Finance'
-import Activity from './Activity'
+import Contracts from './Contracts'
 import Home from './Home'
 const Tab=createBottomTabNavigator()
 
@@ -24,8 +24,10 @@ const TabScreen=(props)=> {
                 iconName = 'finance'
                 size= focused ? 31 : 27
             }
-            else if (route.name=='Activity'){
-                iconName = 'bell'
+            else if (route.name=='Contracts'){
+                // iconName = 'chart-timeline'
+                // iconName = 'file-table-outline'
+                iconName = 'file-document-outline'
                 size= focused ? 31 : 27
             }
             else if (route.name=='More'){
@@ -72,7 +74,7 @@ const TabScreen=(props)=> {
             <Tab.Screen name="Home" component={Home}/>
             <Tab.Screen name="Finance" component={Finance}/>
             <Tab.Screen name="Add" component={Home}/>
-            <Tab.Screen name="Activity" component={Activity}/>
+            <Tab.Screen name="Contracts" component={Contracts}/>
             <Tab.Screen name="More" component={More}/>
         </Tab.Navigator>
     )
