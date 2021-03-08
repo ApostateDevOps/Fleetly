@@ -23,15 +23,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} options={screenOptions.hidden}/>
-        <Stack.Screen name="TabScreen" component={TabScreen} options={screenOptions.hidden}/>
+        <Stack.Screen name="Login" component={LoginScreen} options={{headerShown:false}}/>
+        <Stack.Screen name="TabScreen" component={TabScreen} options={{headerShown:false,gestureEnabled:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
-
-const screenOptions = {
-  hidden:{
-    headerShown:false
-  }
 }

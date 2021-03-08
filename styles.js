@@ -80,3 +80,28 @@ signUp:{
 }
 })
 export {loginStyles}
+
+const moreStyles=StyleSheet.create({
+    item:{
+        // backgroundColor: 'red',
+        paddingHorizontal:15,
+        height:55,
+        // borderBottomWidth:1,
+        justifyContent:'center'
+    },
+    topHeader:{
+        alignItems:'center',
+        justifyContent:'center',
+        height:45,
+        borderColor:'lightgrey',
+        borderBottomWidth:1,
+    },
+    sectionHeader:{
+        fontFamily:'Inter_600SemiBold',
+        fontSize:22,
+        color:'#282828',
+        marginLeft:15,
+        marginVertical:20
+    }
+})
+export {moreStyles}
