@@ -96,12 +96,5 @@ const moreStyles=StyleSheet.create({
         borderColor:'lightgrey',
         borderBottomWidth:1,
     },
-    sectionHeader:{
-        fontFamily:'Inter_600SemiBold',
-        fontSize:22,
-        color:'#282828',
-        marginLeft:15,
-        marginVertical:20
-    }
 })
 export {moreStyles}
