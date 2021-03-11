@@ -10,10 +10,17 @@ const list=[
     title:'Account',
     data:[
       {info:'Michał Pawłowski',icon:'account-circle-outline'},
-      {info:'Upgrade to PREMIUM!',icon:'star-outline'},
+      {info:'Upgrade to PREMIUM!',icon:'star-circle'},
+    ]
+  },
+  {
+    title:'General',
+    data:[      
       {info:'Vehicles',icon:'car'},
       {info:'Categories',icon:'dns-outline'},
       {info:'Currency',icon:'currency-usd'},
+      {info:'Appearance',icon:'invert-colors'},
+      {info:'Notifications',icon:'bell-ring-outline'},
     ]
   },
   {
@@ -39,7 +46,7 @@ const Item=({ info, icon })=>{
     return(
       <View style={{justifyContent:'center'}}>
         <MyButton func={handleLogout} title={info} style={moreStyles.logoutButton}/>
-        <Text style={moreStyles.version}>ver. 1.0.0 </Text>
+        <Text style={moreStyles.version}>Fleetly v1.0.0 </Text>
       </View>
     )
   }
@@ -70,7 +77,7 @@ const More=()=> {
         <View style={moreStyles.topHeader}>
           <Text style={{fontFamily:'Inter_600SemiBold', fontSize:17, color:'#282828'}}>More</Text>
         </View>
-        <SectionList 
+        <SectionList
         sections={list} 
         keyExtractor={(item,index)=>item.info+index}
         renderItem={renderItem}

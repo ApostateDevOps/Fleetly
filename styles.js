@@ -109,6 +109,7 @@ const moreStyles=StyleSheet.create({
         fontSize:22,
         color:'#282828',
         marginLeft:18,
+        // alignSelf:'center',
         marginVertical:15,
     },
     logoutButton:{
