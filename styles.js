@@ -82,13 +82,6 @@ signUp:{
 export {loginStyles}
 
 const moreStyles=StyleSheet.create({
-    item:{
-        // backgroundColor: 'red',
-        paddingHorizontal:15,
-        height:55,
-        // borderBottomWidth:1,
-        justifyContent:'center'
-    },
     topHeader:{
         alignItems:'center',
         justifyContent:'center',
@@ -96,5 +89,43 @@ const moreStyles=StyleSheet.create({
         borderColor:'lightgrey',
         borderBottomWidth:1,
     },
+    item:{
+        // backgroundColor: 'red',
+        paddingHorizontal:15,
+        height:60,
+        // borderBottomWidth:1,
+        justifyContent:'center',
+        alignItems:'center',
+        flexDirection:'row',
+        justifyContent:'flex-start',
+    },
+    itemText:{
+        marginLeft:10,
+        fontFamily:'Inter_400Regular',
+        fontSize:15
+    },
+    sectionHeader:{
+        fontFamily:'Inter_600SemiBold',
+        fontSize:22,
+        color:'#282828',
+        marginLeft:18,
+        marginVertical:15,
+    },
+    logoutButton:{
+    alignSelf:'stretch',
+    alignItems:'center',
+    justifyContent:'center',
+    height:53,
+    borderRadius:45,
+    marginHorizontal:40,
+    backgroundColor:'#ec1817',
+    },
+    version:{
+        marginTop:8,
+        alignSelf:'center', 
+        fontFamily:'Inter_400Regular',
+        color:'darkgrey',
+        fontSize:10
+    }
 })
 export {moreStyles}
