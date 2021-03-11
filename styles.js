@@ -38,7 +38,7 @@ loginButton:{
     justifyContent:'center',
     flex:1,
     backgroundColor:"#ec1817",
-    borderRadius:8,
+    borderRadius:45,
 },
 loginButtonView:{
     alignSelf:'stretch',
@@ -46,8 +46,8 @@ loginButtonView:{
     justifyContent:'center',
     marginTop:50,
     height:53,
-    borderRadius:8,
-    marginHorizontal:45,
+    borderRadius:45,
+    marginHorizontal:90,
     shadowColor: "red",
     shadowOffset: {
 	    width: -1,

@@ -32,7 +32,7 @@ const list=[
 ]
 
 const renderItem=({ item })=>(
-  <ListItem bottomDivider onPress={()=>alert('Hello')}>
+  <ListItem onPress={()=>alert('Hello')}>
     <MaterialCommunityIcons name={item.icon} size={25} color={'#ec1817'}/>
     <ListItem.Content>
       <ListItem.Title style={{fontFamily:'Inter_400Regular', justifyContent:'center'}}>{item.title}</ListItem.Title>
