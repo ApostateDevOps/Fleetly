@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, SectionList, StatusBar, Text, View } from 'react-native';
+import { Alert, SafeAreaView, SectionList, StatusBar, Text, View } from 'react-native';
 import { FlatList, TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import {ListItem, Avatar} from 'react-native-elements';
 import {MaterialCommunityIcons} from '@expo/vector-icons'
@@ -7,7 +7,8 @@ import {moreStyles} from '../styles';
 
 const list=[
   {
-    title:'Account',
+    title:'Michał Pawłowski',
+    subtitle:'xpixelpl@gmail.com',
     icon:'account-circle-outline'
   },
   {
@@ -31,10 +32,11 @@ const list=[
 ]
 
 const renderItem=({ item })=>(
-  <ListItem bottomDivider onPress={()=>alert('tap')}>
+  <ListItem bottomDivider onPress={()=>alert('Hello')}>
     <MaterialCommunityIcons name={item.icon} size={25} color={'#ec1817'}/>
     <ListItem.Content>
-      <ListItem.Title>{item.title}</ListItem.Title>
+      <ListItem.Title style={{fontFamily:'Inter_400Regular', justifyContent:'center'}}>{item.title}</ListItem.Title>
+      <ListItem.Subtitle style={{display: item.subtitle ? 'flex': "none", fontFamily:'Inter_400Regular',paddingTop:2, color:'grey'}}>{item.subtitle}</ListItem.Subtitle>
     </ListItem.Content>
     <MaterialCommunityIcons name='chevron-right' size={25} color={'lightgrey'}/>
   </ListItem>

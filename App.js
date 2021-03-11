@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack=createStackNavigator()
 import LoginScreen from './LoginScreen'
-import {AppLoading} from 'expo'
+import AppLoading from 'expo-app-loading'
 import { useFonts,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
 import TabScreen from './components/TabScreen'
 

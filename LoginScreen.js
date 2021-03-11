@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback, Image } from 'react-native';
 import { TextInput, TouchableOpacity,} from 'react-native-gesture-handler';
 import {loginStyles} from './styles'
-import IconFontisto from 'react-native-vector-icons/Fontisto'
+import {Fontisto} from '@expo/vector-icons'
 import MyButton from './MyButton';
 
 export default class LoginScreen extends Component {
@@ -44,11 +44,11 @@ export default class LoginScreen extends Component {
           </View>
           <View style={loginStyles.underLogoView}>
               <View style={[loginStyles.textInputsView,{borderBottomColor:this.state.loginFocused? "red":"lightgrey"}]}>
-                <IconFontisto name="email" size={16} color={this.state.loginFocused? "red":"grey"} style={loginStyles.inputIcons}/>
+                <Fontisto name="email" size={16} color={this.state.loginFocused? "red":"grey"} style={loginStyles.inputIcons}/>
                 <TextInput style={loginStyles.textInputs} autoCorrect={false} onFocus={()=>this.handleFocus('login')} onBlur={()=>this.handleFocus('login')}/>
               </View>
               <View style={[loginStyles.textInputsView, {borderBottomColor:this.state.passwordFocused? "red":"lightgrey"}]}>
-                <IconFontisto name="locked" size={15} color={this.state.passwordFocused? "red":"grey"} style={loginStyles.inputIcons}/>
+                <Fontisto name="locked" size={15} color={this.state.passwordFocused? "red":"grey"} style={loginStyles.inputIcons}/>
                 <TextInput style={loginStyles.textInputs} secureTextEntry={true} onFocus={()=>this.handleFocus('password')} onBlur={()=>this.handleFocus('password')}></TextInput>
               </View>
               <Text style={loginStyles.forgotPasswordText} onPress={this.handleForgot}>Forgot password?</Text>

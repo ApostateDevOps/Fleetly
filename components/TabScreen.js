@@ -43,13 +43,13 @@ const TabScreen=(props)=> {
                 <View style={{
                     position:'absolute', 
                     bottom:4, 
-                    shadowColor: "red",
-                    shadowOffset: {
-                        width: 0,
-                        height: 5,
-                    },
-                    shadowOpacity: 0.3,
-                    shadowRadius: 5,
+                    // shadowColor: "red",
+                    // shadowOffset: {
+                    //     width: 0,
+                    //     height: 5,
+                    // },
+                    // shadowOpacity: 0.3,
+                    // shadowRadius: 5,
                     // elevation: 55,
                 }}>
                     <MaterialCommunityIcons name={iconName} size={size} color={"#ec1817"} style={{opacity:0.9}} />
@@ -66,7 +66,12 @@ const TabScreen=(props)=> {
             activeTintColor: '#ec1817',
             inactiveTintColor: 'gray',
             style:{
-                height:'9.5%'
+                height:'9.5%',
+                paddingTop:'1%'
+            },
+            labelStyle:{
+                fontFamily:'Inter_500Medium',
+                paddingBottom:'10%'
             }
             // showLabel:false
           }}
