@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Alert, SafeAreaView, SectionList, Text, View } from 'react-native';
 import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import {moreStyles} from '../styles';
 import MyButton from '../MyButton';
 
-const list=[
+const initialList=[
   {
     title:'Account',
     data:[
@@ -16,9 +16,9 @@ const list=[
   {
     title:'General',
     data:[      
-      {info:'Vehicles',icon:'car'},
+      {info:'Vehicles',icon:'car', sideText:'1'},
       {info:'Categories',icon:'dns-outline'},
-      {info:'Currency',icon:'currency-usd'},
+      {info:'Currency',icon:'currency-usd', sideText:'PLN'},
       {info:'Appearance',icon:'invert-colors'},
       {info:'Notifications',icon:'bell-ring-outline'},
     ]
@@ -41,7 +41,7 @@ const handleLogout=()=>{
   alert('Logout')
 }
 
-const Item=({ info, icon })=>{
+const Item=({ info, icon, sideText})=>{
   if(info=='Logout'){
     return(
       <View style={{justifyContent:'center'}}>
@@ -56,6 +56,7 @@ const Item=({ info, icon })=>{
       <View style={moreStyles.item}>
         <MaterialCommunityIcons name={icon} size={31} color={'#ec1817'}/>
           <Text style={moreStyles.itemText}>{info}</Text>
+          <Text style={{position:'absolute', right:45, color:'darkgrey', display: sideText ? 'flex': 'none'}}>{sideText}</Text>
         <MaterialCommunityIcons style={{position:'absolute', right:15}} name={'chevron-right'} size={25} color={'darkgrey'}/>
       </View>
     </TouchableHighlight>
@@ -65,8 +66,10 @@ const Item=({ info, icon })=>{
 
 
 const More=()=> {
+  const [list, setList] = useState(initialList)
+  
   const renderItem=({ item })=>(
-    <Item info={item.info} icon={item.icon}/>
+    <Item info={item.info} icon={item.icon} sideText={item.sideText} />
   )
   
   const renderSectionHeader=({section:{title}})=>(
