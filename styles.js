@@ -130,3 +130,31 @@ const moreStyles=StyleSheet.create({
     }
 })
 export {moreStyles}
+
+const financeStyles=StyleSheet.create({
+    topHeader:{
+        alignItems:'center',
+        justifyContent:'center',
+        height:45,
+        borderColor:'lightgrey',
+        borderBottomWidth:1,
+    },
+    pickersContainer:{
+        flexDirection:'row',
+        marginTop:15,
+        justifyContent:'center'
+    },
+    soloPickerView:{
+        flexDirection:'row',
+        justifyContent:'center',
+        paddingTop:4,
+        // backgroundColor:'lightgrey',
+        borderWidth:1,
+        borderColor:'darkgrey',
+        marginHorizontal:10,
+        height:30,
+        width:80,
+        borderRadius:45
+    }
+})
+export {financeStyles}

@@ -7,7 +7,7 @@ const Stack=createStackNavigator()
 import LoginScreen from './LoginScreen'
 import AppLoading from 'expo-app-loading'
 import { useFonts,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
-import TabScreen from './components/TabScreen'
+import TabScreen from './bottomTabScreens/TabScreen'
 
 export default function App() {
   let [fontsLoaded]=useFonts({
