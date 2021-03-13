@@ -48,15 +48,15 @@ loginButtonView:{
     height:53,
     borderRadius:45,
     marginHorizontal:90,
-    shadowColor: "red",
-    shadowOffset: {
-	    width: -1,
-	    height: 6,
-},
-    shadowOpacity: 0.44,
-    shadowRadius: 10.322,
-    backgroundColor:"#ec1817",
-    elevation: 16,
+//     shadowColor: "red",
+//     shadowOffset: {
+// 	    width: -1,
+// 	    height: 6,
+// },
+//     shadowOpacity: 0.44,
+//     shadowRadius: 10.322,
+//     backgroundColor:"#ec1817",
+//     elevation: 16,
     // borderWidth:1
 },
 loginFB:{
