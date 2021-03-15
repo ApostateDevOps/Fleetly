@@ -52,7 +52,7 @@ const TabScreen=(props)=> {
                     // shadowRadius: 5,
                     // elevation: 55,
                 }}>
-                    <MaterialCommunityIcons name={iconName} size={size} color={"#ec1817"} style={{opacity:0.9}} />
+                    <MaterialCommunityIcons name={iconName} size={size} color={"#ec1817"} />
                 </View>
                 )
             }

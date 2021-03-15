@@ -136,13 +136,14 @@ const financeStyles=StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         height:45,
-        borderColor:'lightgrey',
-        borderBottomWidth:1,
     },
     pickersContainer:{
         flexDirection:'row',
-        marginTop:15,
-        justifyContent:'center'
+        paddingTop:5,
+        paddingBottom:15,
+        justifyContent:'center',
+        borderColor:'lightgrey',
+        borderBottomWidth:1,
     },
     soloPickerView:{
         flexDirection:'row',
@@ -155,6 +156,22 @@ const financeStyles=StyleSheet.create({
         height:30,
         width:80,
         borderRadius:45
+    },
+    transactionsContainer:{
+        // borderWidth:1,
+        height:350,
+        marginTop:15
+    },
+    categoriesContainer:{
+        // borderWidth:1,
+        // backgroundColor:'cyan',
+        height:500
+    },
+    sectionHeader:{
+        fontFamily:'Inter_600SemiBold',
+        fontSize:20,
+        color:'#282828',
+        paddingLeft:10
     }
 })
 export {financeStyles}
