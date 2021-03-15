@@ -23,7 +23,7 @@ const Finance=()=> {
           </TouchableOpacity>
         </View>
 
-        <ScrollView style={{marginTop:12}}>
+        <ScrollView style={{paddingTop:12}}>
           <View style={financeStyles.transactionsContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
           </View>
