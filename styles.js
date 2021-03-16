@@ -160,7 +160,7 @@ const financeStyles=StyleSheet.create({
     transactionsContainer:{
         // borderWidth:1,
         height:350,
-        marginTop:15
+        marginTop:10
     },
     categoriesContainer:{
         // borderWidth:1,
@@ -171,7 +171,13 @@ const financeStyles=StyleSheet.create({
         fontFamily:'Inter_600SemiBold',
         fontSize:20,
         color:'#282828',
-        paddingLeft:10
+        paddingLeft:10,
+    },
+    topTransactions:{
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
+        marginTop:20
     }
 })
 export {financeStyles}

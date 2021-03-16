@@ -5,6 +5,13 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {financeStyles} from '../styles'
 
+// change to useState
+const data={
+  totalIncome:1050,
+  totalExpenses:500,
+  currency:'PLN'
+}
+
 const Finance=()=> {
     return (
       <SafeAreaView style={{ flex: 1}}>
@@ -26,7 +33,19 @@ const Finance=()=> {
         <ScrollView style={{paddingTop:12}}>
           <View style={financeStyles.transactionsContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
+            <View style={financeStyles.topTransactions}>
+              <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                <Text style={{color:'rgb(67,203,149)', fontFamily:'Inter_500Medium', fontSize:25, textAlign:'right'}}>{data.totalIncome} {data.currency}</Text>
+                <Text style={{color:'#282828', fontFamily:'Inter_400Regular'}}>INCOME</Text>
+              </View>
+              <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                <Text style={{color:'rgb(255,80,102)', fontFamily:'Inter_500Medium', fontSize:25, textAlign:'right'}}>{data.totalExpenses} {data.currency}</Text>
+                <Text style={{color:'#282828', fontFamily:'Inter_400Regular'}}>EXPENSES</Text>
+              </View>
+            </View>
+            
           </View>
+
           <View style={financeStyles.categoriesContainer}>
             <Text style={financeStyles.sectionHeader}>Categories</Text>
           </View>
