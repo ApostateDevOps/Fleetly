@@ -157,7 +157,7 @@ const financeStyles=StyleSheet.create({
         width:80,
         borderRadius:45
     },
-    transactionsContainer:{
+    summaryContainer:{
         // borderWidth:1,
         height:350,
         marginTop:10
@@ -173,7 +173,7 @@ const financeStyles=StyleSheet.create({
         color:'#282828',
         paddingLeft:10,
     },
-    topTransactions:{
+    summaryTop:{
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
