@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
+// import {VictoryChart, VictoryBar, VictoryTheme} from 'victory-native';
 import {financeStyles} from '../styles'
 
 // change to useState
@@ -52,15 +53,24 @@ const Finance=()=> {
       )
     }
 
+    // function summaryChart(){
+    //   return(
+    //     <VictoryChart width={350} theme={VictoryTheme.material}>
+    //       <VictoryBar data={data} x="totalIncome" y="currency"/>
+    //       </VictoryChart>
+    //   )
+    // }
+
     return (
       <SafeAreaView style={{ flex: 1}}>
         {topHeader()}
         {topPickers()}
+
         <ScrollView style={{paddingTop:12}}>
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
             {summaryTop()}
-            {/* summaryChart() */}
+            {/* {summaryChart()} */}
           </View>
 
           <View style={financeStyles.categoriesContainer}>

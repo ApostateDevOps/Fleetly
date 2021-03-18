@@ -179,5 +179,7 @@ const financeStyles=StyleSheet.create({
         alignItems:'center',
         marginTop:20
     }
+
+    // Cryptocurrency app: 43:32
 })
 export {financeStyles}
