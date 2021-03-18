@@ -1,4 +1,20 @@
 const {StyleSheet} = require ("react-native")
+
+const globalColors={
+    mainColor:"#ec1817",
+    lightBlack:"#282828",
+}
+export {globalColors}
+
+const globalFonts={
+    light:"Inter_300Light",
+    regular:"Inter_400Regular",
+    medium:"Inter_500Medium",
+    semibold:"Inter_600SemiBold",
+    bold:"Inter_700Bold"
+}
+export {globalFonts}
+
 const loginStyles=StyleSheet.create({
 logoView:{
     flex:3,
@@ -26,8 +42,8 @@ inputIcons:{
 },
 forgotPasswordText:{
     fontSize:13,
-    fontFamily:"Inter_400Regular",
-    color:"#ec1817",
+    fontFamily:globalFonts.regular,
+    color:globalColors.mainColor,
     alignSelf:"flex-end",
     marginRight:45,
     marginTop:15
@@ -37,7 +53,7 @@ loginButton:{
     alignItems:'center',
     justifyContent:'center',
     flex:1,
-    backgroundColor:"#ec1817",
+    backgroundColor:globalColors.mainColor,
     borderRadius:45,
 },
 loginButtonView:{
@@ -55,7 +71,7 @@ loginButtonView:{
 // },
 //     shadowOpacity: 0.44,
 //     shadowRadius: 10.322,
-//     backgroundColor:"#ec1817",
+//     backgroundColor:globalColors.mainColor,
 //     elevation: 16,
     // borderWidth:1
 },
@@ -75,7 +91,7 @@ loginGG:{
     backgroundColor:'wheat'
 },
 signUp:{
-    fontFamily:"Inter_400Regular",
+    fontFamily:globalFonts.regular,
     color:"grey"
 }
 })
@@ -101,13 +117,13 @@ const moreStyles=StyleSheet.create({
     },
     itemText:{
         marginLeft:10,
-        fontFamily:'Inter_400Regular',
+        fontFamily:globalFonts.regular,
         fontSize:15
     },
     sectionHeader:{
-        fontFamily:'Inter_600SemiBold',
+        fontFamily:globalFonts.semibold,
         fontSize:22,
-        color:'#282828',
+        color:globalColors.lightBlack,
         marginLeft:18,
         // alignSelf:'center',
         marginVertical:15,
@@ -119,12 +135,12 @@ const moreStyles=StyleSheet.create({
     height:53,
     borderRadius:45,
     marginHorizontal:40,
-    backgroundColor:'#ec1817',
+    backgroundColor:globalColors.mainColor,
     },
     version:{
         marginTop:8,
         alignSelf:'center', 
-        fontFamily:'Inter_400Regular',
+        fontFamily:globalFonts.regular,
         color:'darkgrey',
         fontSize:10
     }
@@ -168,9 +184,9 @@ const financeStyles=StyleSheet.create({
         height:500
     },
     sectionHeader:{
-        fontFamily:'Inter_600SemiBold',
+        fontFamily:globalFonts.semibold,
         fontSize:20,
-        color:'#282828',
+        color:globalColors.lightBlack,
         paddingLeft:10,
     },
     summaryTop:{

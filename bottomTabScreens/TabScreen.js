@@ -8,6 +8,7 @@ import More from './More'
 import Finance from './Finance'
 import Contracts from './Contracts'
 import Home from './Home'
+import {globalColors, globalFonts} from '../styles'
 const Tab=createBottomTabNavigator()
 
 const TabScreen=(props)=> {
@@ -52,7 +53,7 @@ const TabScreen=(props)=> {
                     // shadowRadius: 5,
                     // elevation: 55,
                 }}>
-                    <MaterialCommunityIcons name={iconName} size={size} color={"#ec1817"} />
+                    <MaterialCommunityIcons name={iconName} size={size} color={globalColors.mainColor} />
                 </View>
                 )
             }
@@ -63,14 +64,14 @@ const TabScreen=(props)=> {
             tabBarLabel: route.name=='Add' ? ()=>null : route.name
           })}
           tabBarOptions={{
-            activeTintColor: '#ec1817',
+            activeTintColor: globalColors.mainColor,
             inactiveTintColor: 'gray',
             style:{
                 height:'9.5%',
                 paddingTop:'1%'
             },
             labelStyle:{
-                fontFamily:'Inter_500Medium',
+                fontFamily: globalFonts.medium,
                 paddingBottom:'10%'
             }
             // showLabel:false

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Alert, SafeAreaView, SectionList, Text, View } from 'react-native';
 import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import {MaterialCommunityIcons} from '@expo/vector-icons'
-import {moreStyles} from '../styles';
+import {globalColors, globalFonts, moreStyles} from '../styles';
 import MyButton from '../MyButton';
 
 const initialList=[
@@ -54,7 +54,7 @@ const Item=({ info, icon, sideText})=>{
     return(
       <TouchableHighlight onPress={()=>alert('tap')} activeOpacity={0.7} underlayColor="lightgrey">
       <View style={moreStyles.item}>
-        <MaterialCommunityIcons name={icon} size={31} color={'#ec1817'}/>
+        <MaterialCommunityIcons name={icon} size={31} color={globalColors.mainColor}/>
           <Text style={moreStyles.itemText}>{info}</Text>
           <Text style={{position:'absolute', right:45, color:'darkgrey', display: sideText ? 'flex': 'none'}}>{sideText}</Text>
         <MaterialCommunityIcons style={{position:'absolute', right:15}} name={'chevron-right'} size={25} color={'darkgrey'}/>
@@ -78,7 +78,7 @@ const More=()=> {
   return (
       <SafeAreaView style={{flex: 1}}>
         <View style={moreStyles.topHeader}>
-          <Text style={{fontFamily:'Inter_600SemiBold', fontSize:17, color:'#282828'}}>More</Text>
+          <Text style={{fontFamily:globalFonts.semibold, fontSize:17, color: globalColors.lightBlack}}>More</Text>
         </View>
         <SectionList
         sections={list} 

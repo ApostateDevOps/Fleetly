@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types'
 import { TouchableOpacity } from 'react-native';
+import {globalFonts} from './styles'
 
 export default class MyButton extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class MyButton extends Component {
   render() {
     return (
         <TouchableOpacity style={[this.props.style]} onPress={this.props.func}>
-            <Text style={{color:'white', fontFamily:"Inter_600SemiBold"}}>{this.props.title}</Text>
+            <Text style={{color:'white', fontFamily:globalFonts.semibold}}>{this.props.title}</Text>
         </TouchableOpacity>
     );
   }

@@ -4,7 +4,7 @@ import { View, Text, Dimensions } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel} from "victory-native";
-import {financeStyles} from '../styles';
+import {financeStyles, globalColors, globalFonts} from '../styles';
 
 // change to useState
 const data={
@@ -24,7 +24,7 @@ const Finance=()=> {
     function topHeader(){
       return(
           <View style={financeStyles.topHeader}>
-            <Text style={{fontFamily:'Inter_600SemiBold', fontSize:17, color:'#282828'}}>Finance</Text>
+            <Text style={{fontFamily:globalFonts.semibold, fontSize:17, color: globalColors.lightBlack}}>Finance</Text>
           </View>
           )
     }
@@ -33,12 +33,12 @@ const Finance=()=> {
       return(
         <View style={financeStyles.pickersContainer}>
           <TouchableOpacity style={financeStyles.soloPickerView}>
-            <Text style={{paddingLeft:5, color:'#282828', fontFamily:'Inter_300Light'}}>All cars</Text>
-            <MaterialCommunityIcons name={'chevron-down'} size={15} color={'#282828'} style={{paddingTop:2}}/>
+            <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All cars</Text>
+            <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
           </TouchableOpacity>
           <TouchableOpacity style={financeStyles.soloPickerView}>
-            <Text style={{paddingLeft:5, color:'#282828', fontFamily:'Inter_300Light'}}>All time</Text>
-            <MaterialCommunityIcons name={'chevron-down'} size={15} color={'#282828'} style={{paddingTop:2}}/>
+            <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All time</Text>
+            <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
           </TouchableOpacity>
         </View>
       )
@@ -48,12 +48,12 @@ const Finance=()=> {
       return(
         <View style={financeStyles.summaryTop}>
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color:'rgb(67,203,149)', fontFamily:'Inter_500Medium', fontSize:25, textAlign:'right'}}>{data.totalIncome} {data.currency}</Text>
-          <Text style={{color:'#282828', fontFamily:'Inter_400Regular'}}>INCOME</Text>
+          <Text style={{color:'rgb(67,203,149)', fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalIncome} {data.currency}</Text>
+          <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>INCOME</Text>
         </View>
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color:'rgb(255,80,102)', fontFamily:'Inter_500Medium', fontSize:25, textAlign:'right'}}>{data.totalExpenses} {data.currency}</Text>
-          <Text style={{color:'#282828', fontFamily:'Inter_400Regular'}}>EXPENSES</Text>
+          <Text style={{color:'rgb(255,80,102)', fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalExpenses} {data.currency}</Text>
+          <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>EXPENSES</Text>
         </View>
       </View>
       )
@@ -69,23 +69,16 @@ const Finance=()=> {
             cornerRadius={{top:8, bottom:8}}
             data={chartData}
             x="info" y="value"
-            labels={({datum})=>{
-              if(datum.info=="EXPENSES"){
-                return(
-                  `-${datum.value} ${data.currency}`
-                )
-              }
-              else{
-                return(
-                  `${datum.originalValue} ${data.currency}`
-                )
-              }
-            }}
+            labels={({datum})=>datum.info=="EXPENSES" ? `-${datum.value} ${data.currency}` : `${datum.originalValue} ${data.currency}`}       //visual minus value
             labelComponent={<VictoryLabel/>}
             barRatio={1}
             style={{
               data:{
                 fill: ({datum})=> datum.info=="EXPENSES" || datum.originalValue<0 ? 'rgb(255,80,102)' : 'rgb(67,203,149)'
+              },
+              labels:{
+                fontWeight:'500',
+                fontSize:13
               }
             }}
             />
