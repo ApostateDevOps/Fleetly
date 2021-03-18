@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {financeStyles} from '../styles'
+import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis} from "victory-native";
+import {financeStyles} from '../styles';
 
 // change to useState
 const data={
@@ -11,6 +12,11 @@ const data={
   totalExpenses:500,
   currency:'PLN'
 }
+const chartData=[
+  {info:"Profit", value: data.totalIncome-data.totalExpenses},
+  {info:"Expenses", value: data.totalExpenses},
+  {info:"Income", value: data.totalIncome},
+]
 
 const Finance=()=> {
     
@@ -52,6 +58,26 @@ const Finance=()=> {
       )
     }
 
+    function summaryChart(){
+      return(
+        <VictoryChart height={260} theme={VictoryTheme.material}>
+          {/* <VictoryAxis style={{axis:{stroke:"transparent"}, ticks:{stroke:"transparent"}, tickLabels:{fill:'transparent'}}}/> */}
+          <VictoryBar
+            cornerRadius={8}
+            horizontal
+            data={chartData}
+            x="info" y="value"
+            barRatio={0.7}
+            style={{
+              data:{
+                fill: ({datum})=> datum.info=="Expenses" ? 'rgb(255,80,102)' : 'rgb(67,203,149)'
+              }
+            }}
+            />
+        </VictoryChart>
+      )
+    }
+
     return (
       <SafeAreaView style={{ flex: 1}}>
         {topHeader()}
@@ -60,7 +86,7 @@ const Finance=()=> {
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
             {summaryTop()}
-            {/* summaryChart() */}
+            {summaryChart()}
           </View>
 
           <View style={financeStyles.categoriesContainer}>
