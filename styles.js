@@ -177,7 +177,8 @@ const financeStyles=StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
-        marginTop:20
+        marginTop:20,
+        marginBottom:25
     }
 })
 export {financeStyles}

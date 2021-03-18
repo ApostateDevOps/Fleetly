@@ -1,22 +1,23 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis} from "victory-native";
+import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel} from "victory-native";
 import {financeStyles} from '../styles';
 
 // change to useState
 const data={
-  totalIncome:1050,
-  totalExpenses:500,
+  totalIncome:500,
+  totalExpenses:350,
   currency:'PLN'
 }
 const chartData=[
-  {info:"Profit", value: data.totalIncome-data.totalExpenses},
-  {info:"Expenses", value: data.totalExpenses},
-  {info:"Income", value: data.totalIncome},
+  {info:"PROFIT", value: Math.abs(data.totalIncome-data.totalExpenses), originalValue:data.totalIncome-data.totalExpenses},
+  {info:"EXPENSES", value: data.totalExpenses, originalValue:data.totalExpenses},
+  {info:"INCOME", value: data.totalIncome, originalValue:data.totalIncome},
 ]
+const screenWidth = Math.round(Dimensions.get('window').width);
 
 const Finance=()=> {
     
@@ -60,17 +61,31 @@ const Finance=()=> {
 
     function summaryChart(){
       return(
-        <VictoryChart height={260} theme={VictoryTheme.material}>
-          {/* <VictoryAxis style={{axis:{stroke:"transparent"}, ticks:{stroke:"transparent"}, tickLabels:{fill:'transparent'}}}/> */}
+        <VictoryChart height={200} width={screenWidth} padding={{left:90, top:40, bottom:40, right:90}} theme={VictoryTheme.material}>
+          <VictoryAxis style={{axis:{stroke:"transparent"}, ticks:{stroke:"transparent"}}}/>
+          {/* tickLabels:{fill:'transparent'} */}
           <VictoryBar
-            cornerRadius={8}
             horizontal
+            cornerRadius={{top:8, bottom:8}}
             data={chartData}
             x="info" y="value"
-            barRatio={0.7}
+            labels={({datum})=>{
+              if(datum.info=="EXPENSES"){
+                return(
+                  `-${datum.value} ${data.currency}`
+                )
+              }
+              else{
+                return(
+                  `${datum.originalValue} ${data.currency}`
+                )
+              }
+            }}
+            labelComponent={<VictoryLabel/>}
+            barRatio={1}
             style={{
               data:{
-                fill: ({datum})=> datum.info=="Expenses" ? 'rgb(255,80,102)' : 'rgb(67,203,149)'
+                fill: ({datum})=> datum.info=="EXPENSES" || datum.originalValue<0 ? 'rgb(255,80,102)' : 'rgb(67,203,149)'
               }
             }}
             />
