@@ -3,6 +3,8 @@ const {StyleSheet} = require ("react-native")
 const globalColors={
     mainColor:"#ec1817",
     lightBlack:"#282828",
+    expenses:"rgb(255,80,102)",
+    income:"rgb(67,203,149)"
 }
 export {globalColors}
 
@@ -193,8 +195,8 @@ const financeStyles=StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
-        marginTop:20,
-        marginBottom:25
+        marginTop:25,
+        marginBottom:20
     }
 })
 export {financeStyles}

@@ -48,11 +48,11 @@ const Finance=()=> {
       return(
         <View style={financeStyles.summaryTop}>
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color:'rgb(67,203,149)', fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalIncome} {data.currency}</Text>
+          <Text style={{color: globalColors.income, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalIncome} {data.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>INCOME</Text>
         </View>
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color:'rgb(255,80,102)', fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalExpenses} {data.currency}</Text>
+          <Text style={{color: globalColors.expenses, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalExpenses} {data.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>EXPENSES</Text>
         </View>
       </View>
@@ -61,7 +61,7 @@ const Finance=()=> {
 
     function summaryChart(){
       return(
-        <VictoryChart height={200} width={screenWidth} padding={{left:90, top:40, bottom:40, right:90}} theme={VictoryTheme.material}>
+        <VictoryChart height={200} width={screenWidth} padding={{left:90, top:45, bottom:45, right:90}} theme={VictoryTheme.material}>
           <VictoryAxis style={{axis:{stroke:"transparent"}, ticks:{stroke:"transparent"}}}/>
           {/* tickLabels:{fill:'transparent'} */}
           <VictoryBar
@@ -74,11 +74,12 @@ const Finance=()=> {
             barRatio={1}
             style={{
               data:{
-                fill: ({datum})=> datum.info=="EXPENSES" || datum.originalValue<0 ? 'rgb(255,80,102)' : 'rgb(67,203,149)'
+                fill: ({datum})=> datum.info=="EXPENSES" || datum.originalValue<0 ? globalColors.expenses : globalColors.income
               },
               labels:{
                 fontWeight:'500',
-                fontSize:13
+                fontSize:13,
+                fill: ({datum})=> datum.info=="EXPENSES" || datum.originalValue<0 ? globalColors.expenses : globalColors.income
               }
             }}
             />
