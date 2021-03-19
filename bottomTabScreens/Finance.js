@@ -96,11 +96,11 @@ const Finance=()=> {
           onPress={(newSelectedIndex)=>setSelectedIndex(newSelectedIndex)}
           selectedIndex={selectedIndex}
           buttons={buttons}
-          containerStyle={{height:60, marginHorizontal:50, marginVertical:25, backgroundColor:'lightgrey', borderWidth:2, borderColor:'lightgrey' ,borderRadius:15}}
+          containerStyle={{height:55, marginHorizontal:45, marginVertical:25, backgroundColor:'#dbdbdbdb', borderWidth:2, borderColor:'#dbdbdbdb' ,borderRadius:15}}
           innerBorderStyle={{width:0}}
           buttonStyle={{backgroundColor:'transparent'}}
           selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
-          selectedTextStyle={{color:"grey"}}
+          selectedTextStyle={{color: globalColors.lightBlack}}
         />
       )
     }
