@@ -1,6 +1,7 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, Dimensions } from 'react-native';
+import { ButtonGroup } from 'react-native-elements';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel} from "victory-native";
@@ -8,7 +9,7 @@ import {financeStyles, globalColors, globalFonts} from '../styles';
 
 // change to useState
 const data={
-  totalIncome:500,
+  totalIncome:1050,
   totalExpenses:350,
   currency:'PLN'
 }
@@ -87,6 +88,23 @@ const Finance=()=> {
       )
     }
 
+    function buttonGroup(){
+      const buttons=['Expenses', 'Income']
+      const [selectedIndex, setSelectedIndex]= useState(0)
+      return(
+        <ButtonGroup 
+          onPress={(newSelectedIndex)=>setSelectedIndex(newSelectedIndex)}
+          selectedIndex={selectedIndex}
+          buttons={buttons}
+          containerStyle={{height:60, marginHorizontal:50, marginVertical:25, backgroundColor:'lightgrey', borderWidth:2, borderColor:'lightgrey' ,borderRadius:15}}
+          innerBorderStyle={{width:0}}
+          buttonStyle={{backgroundColor:'transparent'}}
+          selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
+          selectedTextStyle={{color:"grey"}}
+        />
+      )
+    }
+
     return (
       <SafeAreaView style={{ flex: 1}}>
         {topHeader()}
@@ -100,6 +118,7 @@ const Finance=()=> {
 
           <View style={financeStyles.categoriesContainer}>
             <Text style={financeStyles.sectionHeader}>Categories</Text>
+            {buttonGroup()}
           </View>
         </ScrollView>
 
