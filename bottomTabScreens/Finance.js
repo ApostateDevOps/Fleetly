@@ -1,9 +1,8 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { color } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel, VictoryPie} from "victory-native";
 import {financeStyles, globalColors, globalFonts} from '../styles';
@@ -17,6 +16,12 @@ function sumTotal(arr){
   return sum
 }
 const pieData={
+  income:[
+    {category:'Rental', value:11100, color:"#58cc8a"},
+    {category:'Overmileage', value:450, color:"#ff8fdb"},
+    {category:'Damage', value:100, color:"#3d5db8"},
+    {category:'Transport', value:150, color:"#FFA32F"},
+  ],
   expenses:[
     {category:'Fuel', value:280, color:"#FFA32F"},
     {category:'Repairs', value:550, color:"#41a1d9"},
@@ -24,12 +29,6 @@ const pieData={
     {category:'Lease', value:3230, color:"#db6558"},
     {category:'Insurance', value:930, color:"#9552EA"},
     {category:'Other', value:350, color:"#c9bb8b"},
-  ],
-  income:[
-    {category:'Rental', value:1100, color:"#ff8fdb"},
-    {category:'Overmileage', value:450, color:"#58cc8a"},
-    {category:'Damage', value:100, color:"#3d5db8"},
-    {category:'Transport', value:150, color:"#FFA32F"},
   ],
 }
 const totalData={
@@ -42,6 +41,11 @@ const chartData=[
   {info:"EXPENSES", value: totalData.totalExpenses, originalValue:totalData.totalExpenses},
   {info:"INCOME", value: totalData.totalIncome, originalValue:totalData.totalIncome},
 ]
+// const defaultChartData=[
+//   {info:"PROFIT",value:50},
+//   {info:"EXPENSES",value:50},
+//   {info:"INCOME",value:1},
+// ]
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 
@@ -86,6 +90,10 @@ const Finance=()=> {
     }
 
     function summaryChart(){
+      // const [graphicData, setGraphicData]=useState(defaultChartData);
+      // useEffect(()=>{
+      //   setGraphicData(chartData);
+      // },[])
       return(
         <VictoryChart height={200} width={screenWidth} padding={{left:90, top:45, bottom:45, right:90}} theme={VictoryTheme.material}>
           <VictoryAxis style={{axis:{stroke:"transparent"}, ticks:{stroke:"transparent"}}}/>
@@ -143,7 +151,7 @@ const Finance=()=> {
           data={selectedIndex==0 ? pieData.expenses : pieData.income}
           x="category"
           y="value"
-          innerRadius={60}
+          innerRadius={55}
           style={{
             data:{
               fill:({datum})=>datum.color
@@ -155,6 +163,7 @@ const Finance=()=> {
             }
           }}
           labels={({datum})=>selectedIndex==0 ? `${Math.round(datum.value/totalData.totalExpenses*100)}%` : `${Math.round(datum.value/totalData.totalIncome*100)}%`}
+          animate={{easing:"exp"}}
         />
       )
     }
