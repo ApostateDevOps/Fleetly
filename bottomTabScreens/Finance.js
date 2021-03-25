@@ -3,21 +3,46 @@ import React, { Component, useState } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { color } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel} from "victory-native";
+import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel, VictoryPie} from "victory-native";
 import {financeStyles, globalColors, globalFonts} from '../styles';
 
-// change to useState
-const data={
-  totalIncome:1050,
-  totalExpenses:350,
+// redux
+function sumTotal(arr){
+  let sum=0
+  for(let i=0;i<arr.length;i++){
+    sum+=arr[i].value
+  }
+  return sum
+}
+const pieData={
+  expenses:[
+    {category:'Fuel', value:280, color:"#FFA32F"},
+    {category:'Repairs', value:550, color:"#41a1d9"},
+    {category:'Upgrades', value:1230, color:"#f2ce3d"},
+    {category:'Lease', value:3230, color:"#db6558"},
+    {category:'Insurance', value:930, color:"#9552EA"},
+    {category:'Other', value:350, color:"#c9bb8b"},
+  ],
+  income:[
+    {category:'Rental', value:1100, color:"#ff8fdb"},
+    {category:'Overmileage', value:450, color:"#58cc8a"},
+    {category:'Damage', value:100, color:"#3d5db8"},
+    {category:'Transport', value:150, color:"#FFA32F"},
+  ],
+}
+const totalData={
+  totalIncome:sumTotal(pieData.income),
+  totalExpenses:sumTotal(pieData.expenses),
   currency:'PLN'
 }
 const chartData=[
-  {info:"PROFIT", value: Math.abs(data.totalIncome-data.totalExpenses), originalValue:data.totalIncome-data.totalExpenses},
-  {info:"EXPENSES", value: data.totalExpenses, originalValue:data.totalExpenses},
-  {info:"INCOME", value: data.totalIncome, originalValue:data.totalIncome},
+  {info:"PROFIT", value: Math.abs(totalData.totalIncome-totalData.totalExpenses), originalValue:totalData.totalIncome-totalData.totalExpenses},
+  {info:"EXPENSES", value: totalData.totalExpenses, originalValue:totalData.totalExpenses},
+  {info:"INCOME", value: totalData.totalIncome, originalValue:totalData.totalIncome},
 ]
+
 const screenWidth = Math.round(Dimensions.get('window').width);
 
 const Finance=()=> {
@@ -49,11 +74,11 @@ const Finance=()=> {
       return(
         <View style={financeStyles.summaryTop}>
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color: globalColors.income, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalIncome} {data.currency}</Text>
+          <Text style={{color: globalColors.income, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{totalData.totalIncome} {totalData.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>INCOME</Text>
         </View>
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color: globalColors.expenses, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{data.totalExpenses} {data.currency}</Text>
+          <Text style={{color: globalColors.expenses, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{totalData.totalExpenses} {totalData.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>EXPENSES</Text>
         </View>
       </View>
@@ -70,7 +95,7 @@ const Finance=()=> {
             cornerRadius={{top:8, bottom:8}}
             data={chartData}
             x="info" y="value"
-            labels={({datum})=>datum.info=="EXPENSES" ? `-${datum.value} ${data.currency}` : `${datum.originalValue} ${data.currency}`}       //visual minus value
+            labels={({datum})=>datum.info=="EXPENSES" ? `-${datum.value} ${totalData.currency}` : `${datum.originalValue} ${totalData.currency}`}       //visual minus value
             labelComponent={<VictoryLabel/>}
             barRatio={1}
             style={{
@@ -92,6 +117,7 @@ const Finance=()=> {
       const buttons=['Expenses', 'Income']
       const [selectedIndex, setSelectedIndex]= useState(0)
       return(
+        <View>
         <ButtonGroup 
           onPress={(newSelectedIndex)=>setSelectedIndex(newSelectedIndex)}
           selectedIndex={selectedIndex}
@@ -101,14 +127,42 @@ const Finance=()=> {
           buttonStyle={{backgroundColor:'transparent'}}
           selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
           selectedTextStyle={{color: globalColors.lightBlack}}
+          />
+
+        {pieChart(selectedIndex)}
+        
+        </View>
+      )
+    }
+
+    function pieChart(selectedIndex){
+      return(
+        <VictoryPie
+          height={300}
+          width={screenWidth}
+          data={selectedIndex==0 ? pieData.expenses : pieData.income}
+          x="category"
+          y="value"
+          innerRadius={60}
+          style={{
+            data:{
+              fill:({datum})=>datum.color
+            },
+            labels:{
+              fontWeight:'400',
+              fontSize:15,
+              fill:({datum})=>datum.color
+            }
+          }}
+          labels={({datum})=>selectedIndex==0 ? `${Math.round(datum.value/totalData.totalExpenses*100)}%` : `${Math.round(datum.value/totalData.totalIncome*100)}%`}
         />
       )
     }
 
     return (
-      <SafeAreaView style={{ flex: 1}}>
-        {topHeader()}
-        {topPickers()}
+        <SafeAreaView>
+          {topHeader()}
+          {topPickers()}
         <ScrollView style={{paddingTop:12}}>
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
@@ -119,10 +173,10 @@ const Finance=()=> {
           <View style={financeStyles.categoriesContainer}>
             <Text style={financeStyles.sectionHeader}>Categories</Text>
             {buttonGroup()}
+            {/* piechart in buttongroup */}
           </View>
         </ScrollView>
-
-      </SafeAreaView>
+        </SafeAreaView>
     );
 }
 export default Finance

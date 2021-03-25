@@ -183,7 +183,7 @@ const financeStyles=StyleSheet.create({
     categoriesContainer:{
         // borderWidth:1,
         // backgroundColor:'cyan',
-        height:500
+        height:800
     },
     sectionHeader:{
         fontFamily:globalFonts.semibold,
