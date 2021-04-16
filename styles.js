@@ -176,14 +176,10 @@ const financeStyles=StyleSheet.create({
         borderRadius:45
     },
     summaryContainer:{
-        // borderWidth:1,
-        height:350,
         marginTop:10
     },
     categoriesContainer:{
-        // borderWidth:1,
-        // backgroundColor:'cyan',
-        height:800
+        // height:600
     },
     sectionHeader:{
         fontFamily:globalFonts.semibold,

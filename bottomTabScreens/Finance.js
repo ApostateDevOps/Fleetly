@@ -1,5 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { Component, useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
 import { View, Text, Dimensions } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -138,7 +139,7 @@ const Finance=()=> {
           />
 
         {pieChart(selectedIndex)}
-        
+        {/* {categoriesList(selectedIndex)} */}
         </View>
       )
     }
@@ -168,11 +169,28 @@ const Finance=()=> {
       )
     }
 
+    function categoriesList(){
+      const Item=({title})=>(
+        <View style={{backgroundColor:'red', width:screenWidth}}>
+          <Text>{title}</Text>
+        </View>
+      )
+      return (
+        <FlatList
+          data={pieData.expenses}
+          renderItem={({item})=>(<Item title={item.category}/>)}
+          keyExtractor={item=>item.category}
+      />
+      )
+    }
+
     return (
-        <SafeAreaView>
+      <View style={{flex:1}}>
+        <SafeAreaView style={{flex:1}}>
           {topHeader()}
+        </SafeAreaView>
           {topPickers()}
-        <ScrollView style={{paddingTop:12}}>
+        <ScrollView style={{paddingTop:12}} nestedScrollEnabled={true}>
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
             {summaryTop()}
@@ -182,10 +200,11 @@ const Finance=()=> {
           <View style={financeStyles.categoriesContainer}>
             <Text style={financeStyles.sectionHeader}>Categories</Text>
             {buttonGroup()}
-            {/* piechart in buttongroup */}
+            {/* pieChart in buttonGroup */}
+            {/* {categoriesList()} */}
           </View>
         </ScrollView>
-        </SafeAreaView>
+      </View>
     );
 }
 export default Finance
