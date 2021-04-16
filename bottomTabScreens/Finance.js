@@ -126,20 +126,22 @@ const Finance=()=> {
       const buttons=['Expenses', 'Income']
       const [selectedIndex, setSelectedIndex]= useState(0)
       return(
-        <View>
-        <ButtonGroup 
-          onPress={(newSelectedIndex)=>setSelectedIndex(newSelectedIndex)}
-          selectedIndex={selectedIndex}
-          buttons={buttons}
-          containerStyle={{height:55, marginHorizontal:45, marginVertical:25, backgroundColor:'#dbdbdbdb', borderWidth:2, borderColor:'#dbdbdbdb' ,borderRadius:15}}
-          innerBorderStyle={{width:0}}
-          buttonStyle={{backgroundColor:'transparent'}}
-          selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
-          selectedTextStyle={{color: globalColors.lightBlack}}
-          />
+          <View>
+          <ButtonGroup 
+            onPress={(newSelectedIndex)=>setSelectedIndex(newSelectedIndex)}
+            selectedIndex={selectedIndex}
+            buttons={buttons}
+            containerStyle={{height:55, marginHorizontal:45, marginVertical:25, backgroundColor:'#dbdbdbdb', borderWidth:2, borderColor:'#dbdbdbdb' ,borderRadius:15}}
+            innerBorderStyle={{width:0}}
+            buttonStyle={{backgroundColor:'transparent'}}
+            selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
+            selectedTextStyle={{color: globalColors.lightBlack}}
+            />
 
-        {pieChart(selectedIndex)}
-        {/* {categoriesList(selectedIndex)} */}
+          {pieChart(selectedIndex)}
+          <View style={{paddingBottom:20}}>
+            {categoriesList(selectedIndex)}
+          </View>
         </View>
       )
     }
@@ -169,19 +171,42 @@ const Finance=()=> {
       )
     }
 
-    function categoriesList(){
-      const Item=({title})=>(
-        <View style={{backgroundColor:'red', width:screenWidth}}>
-          <Text>{title}</Text>
+    function categoriesList(selectedIndex){
+
+      function CategoryElement(el){
+        return(
+        <View style={financeStyles.categoryElement}>
+          <View style={{alignSelf:'flex-start', justifyContent:'center', marginLeft:5}}>
+            <View style={{backgroundColor:el.element.color, height:25, width:25, borderRadius:45, marginHorizontal:15}}></View>
+          </View>
+          <View style={{flex:1, justifyContent:'center'}}>
+            <Text style={{fontFamily:globalFonts.regular}}>{el.element.category}</Text>
+          </View>
+          <View style={{alignSelf:'flex-end',justifyContent:'center', marginHorizontal:15}}>
+            <Text style={{fontFamily:globalFonts.regular, color:selectedIndex==0 ? globalColors.expenses: globalColors.income}}> {el.element.value} {totalData.currency}</Text>
+          </View>
         </View>
-      )
-      return (
-        <FlatList
-          data={pieData.expenses}
-          renderItem={({item})=>(<Item title={item.category}/>)}
-          keyExtractor={item=>item.category}
-      />
-      )
+        )
+      }
+
+      if(selectedIndex==0){
+        return pieData.expenses
+        .sort((a,b)=>(b.value-a.value))
+        .map((element)=>{
+          return(
+              <CategoryElement element={element}/>
+          )
+        })
+      }
+      else {        
+        return pieData.income
+        .sort((a,b)=>(b.value-a.value))
+        .map((element)=>{
+         return(
+            <CategoryElement element={element}/>
+         ) 
+        })
+      }
     }
 
     return (
@@ -201,7 +226,7 @@ const Finance=()=> {
             <Text style={financeStyles.sectionHeader}>Categories</Text>
             {buttonGroup()}
             {/* pieChart in buttonGroup */}
-            {/* {categoriesList()} */}
+            {/* categoriesList in buttonGroup */}
           </View>
         </ScrollView>
       </View>

@@ -193,6 +193,11 @@ const financeStyles=StyleSheet.create({
         alignItems:'center',
         marginTop:25,
         marginBottom:20
+    },
+    categoryElement:{
+        flexDirection:'row',
+        // backgroundColor:'lightblue',
+        marginBottom:20,
     }
 })
 export {financeStyles}
