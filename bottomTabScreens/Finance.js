@@ -3,7 +3,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { View, Text, Dimensions } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel, VictoryPie} from "victory-native";
 import {financeStyles, globalColors, globalFonts} from '../styles';
@@ -139,7 +139,7 @@ const Finance=()=> {
             />
 
           {pieChart(selectedIndex)}
-          <View style={{paddingBottom:20}}>
+          <View style={{paddingVertical:15}}>
             {categoriesList(selectedIndex)}
           </View>
         </View>
@@ -175,18 +175,21 @@ const Finance=()=> {
 
       function CategoryElement(el){
         return(
+        <TouchableHighlight onPress={()=>alert("tap")} activeOpacity={0.7} underlayColor="lightgrey">
         <View style={financeStyles.categoryElement}>
-          <View style={{alignSelf:'flex-start', justifyContent:'center', marginLeft:5}}>
-            <View style={{backgroundColor:el.element.color, height:25, width:25, borderRadius:45, marginHorizontal:15}}></View>
+          <View style={{justifyContent:'center', marginLeft:5}}>
+            <View style={{backgroundColor:el.element.color,height:22, width:22, borderRadius:45, marginHorizontal:15}}></View>
           </View>
           <View style={{flex:1, justifyContent:'center'}}>
-            <Text style={{fontFamily:globalFonts.regular}}>{el.element.category}</Text>
+            <Text style={{fontFamily:globalFonts.regular, fontSize:15, }}>{el.element.category}</Text>
           </View>
-          <View style={{alignSelf:'flex-end',justifyContent:'center', marginHorizontal:15}}>
-            <Text style={{fontFamily:globalFonts.regular, color:selectedIndex==0 ? globalColors.expenses: globalColors.income}}> {el.element.value} {totalData.currency}</Text>
+          <View style={{justifyContent:'center', marginHorizontal:15}}>
+            <Text style={{fontFamily:globalFonts.regular, fontSize:15, color:selectedIndex==0 ? globalColors.expenses: globalColors.income}}> {selectedIndex==0 ? -el.element.value : el.element.value} {totalData.currency}</Text>
           </View>
         </View>
+        </TouchableHighlight>
         )
+
       }
 
       if(selectedIndex==0){
