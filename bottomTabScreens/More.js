@@ -45,7 +45,7 @@ const handleLogout=()=>{
 const Item=({ info, icon, sideText})=>{
   if(info=='Logout'){
     return(
-      <View style={{justifyContent:'center'}}>
+      <View style={{justifyContent:'center',}}>
         <MyButton func={handleLogout} title={info} style={moreStyles.logoutButton}/>
         <Text style={moreStyles.version}>Fleetly v1.0.0 </Text>
       </View>
@@ -53,7 +53,7 @@ const Item=({ info, icon, sideText})=>{
   }
   else{
     return(
-      <TouchableHighlight onPress={()=>alert('tap')} activeOpacity={0.7} underlayColor="lightgrey">
+      <TouchableHighlight onPress={()=>alert('tap')} activeOpacity={0.5} underlayColor={globalColors.rootLight}>
       <View style={moreStyles.item}>
         <MaterialCommunityIcons name={icon} size={31} color={globalColors.mainColor}/>
           <Text style={moreStyles.itemText}>{info}</Text>

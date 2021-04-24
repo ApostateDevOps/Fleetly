@@ -104,14 +104,17 @@ export {loginStyles}
 
 const moreStyles=StyleSheet.create({
     item:{
-        // backgroundColor: 'red',
+        backgroundColor: 'white',
+        marginHorizontal:10,
+        marginVertical:5,
+        borderRadius:10,
         paddingHorizontal:15,
         height:60,
-        // borderBottomWidth:1,
         justifyContent:'center',
         alignItems:'center',
         flexDirection:'row',
         justifyContent:'flex-start',
+        
     },
     itemText:{
         marginLeft:10,
@@ -147,7 +150,7 @@ export {moreStyles}
 
 const financeStyles=StyleSheet.create({
     summaryContainer:{
-        marginTop:10
+        marginTop:10,
     },
     categoriesContainer:{
         // height:600
@@ -164,11 +167,23 @@ const financeStyles=StyleSheet.create({
         marginTop:25,
         marginBottom:20,
     },
-    summaryChartContainer:{
-        // backgroundColor:'white', 
-        // borderRadius:10, 
-        // marginHorizontal:10,
-        marginBottom:25
+    summaryMoneyBlock:{
+        flex:1, 
+        height:90 ,
+        justifyContent:'center', 
+        alignItems:'center', 
+        borderRadius:15, 
+        marginHorizontal:10,
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.18,
+        shadowRadius: 1.00,
+        
+        elevation: 1,
     },
     categoryElement:{
         flexDirection:'row',
@@ -177,7 +192,16 @@ const financeStyles=StyleSheet.create({
         backgroundColor:'white',
         marginVertical:6,
         marginHorizontal:10,
-        borderRadius:20
+        borderRadius:25,
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 1,
+        // },
+        // shadowOpacity: 0.18,
+        // shadowRadius: 1.00,
+
+        // elevation: 1,
     }
 })
 export {financeStyles}

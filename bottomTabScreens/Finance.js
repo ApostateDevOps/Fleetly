@@ -56,11 +56,11 @@ const Finance=()=> {
     function SummaryTop(){
       return(
         <View style={financeStyles.summaryTop}>
-        <View style={{flex:1, height:90 ,justifyContent:'center', alignItems:'center', backgroundColor:'white', borderRadius:15, marginHorizontal:10}}>
+        <View style={financeStyles.summaryMoneyBlock}>
           <Text style={{color: globalColors.income, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{totalData.totalIncome} {totalData.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>INCOME</Text>
         </View>
-        <View style={{flex:1, height:90 ,justifyContent:'center', alignItems:'center', backgroundColor:'white', borderRadius:15, marginHorizontal:10}}>
+        <View style={financeStyles.summaryMoneyBlock}>
           <Text style={{color: globalColors.expenses, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{totalData.totalExpenses} {totalData.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>EXPENSES</Text>
         </View>
@@ -74,7 +74,7 @@ const Finance=()=> {
       //   setGraphicData(chartData);
       // },[])
       return(
-        <View style={financeStyles.summaryChartContainer}>
+        <View style={{marginBottom:25}}>
         <VictoryChart height={200} width={screenWidth-20} padding={{left:90, top:45, bottom:45, right:90}} theme={VictoryTheme.material}>
           <VictoryAxis style={{axis:{stroke:"transparent"}, ticks:{stroke:"transparent"}}}/>
           {/* tickLabels:{fill:'transparent'} */}
@@ -147,7 +147,7 @@ const Finance=()=> {
 
       function CategoryElement(el){
         return(
-        <TouchableHighlight onPress={()=>alert("tap")} activeOpacity={0.7} underlayColor={globalColors.rootLight}>
+        <TouchableHighlight onPress={()=>alert("tap")} activeOpacity={0.5} underlayColor={globalColors.rootLight}>
         <View style={financeStyles.categoryElement}>
           <View style={{justifyContent:'center', marginLeft:5}}>
             <View style={{backgroundColor:el.element.color,height:22, width:22, borderRadius:45, marginHorizontal:15}}></View>
@@ -193,8 +193,10 @@ const Finance=()=> {
         <ScrollView style={{paddingTop:12}} nestedScrollEnabled={true}>
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
-            <SummaryTop/>
-            <SummaryChart/>
+            <View style={{ marginHorizontal:15, borderRadius:15,}}>
+              <SummaryTop/>
+              <SummaryChart/>
+            </View>
           </View>
 
           <View style={financeStyles.categoriesContainer}>
