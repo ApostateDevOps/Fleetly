@@ -53,21 +53,6 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 
 const Finance=()=> {
 
-    // function TopPickers(){
-    //   return(
-    //     <View style={financeStyles.pickersContainer}>
-    //       <TouchableOpacity style={financeStyles.soloPickerView}>
-    //         <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All cars</Text>
-    //         <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
-    //       </TouchableOpacity>
-    //       <TouchableOpacity style={financeStyles.soloPickerView}>
-    //         <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All time</Text>
-    //         <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
-    //       </TouchableOpacity>
-    //     </View>
-    //   )
-    // }
-
     function SummaryTop(){
       return(
         <View style={financeStyles.summaryTop}>
@@ -118,7 +103,6 @@ const Finance=()=> {
     function buttonGroup(){
       const buttons=['Expenses', 'Income']
       return(
-          <View>
           <ButtonGroup 
             onPress={(newSelectedIndex)=>setSelectedIndex(newSelectedIndex)}
             selectedIndex={selectedIndex}
@@ -129,7 +113,6 @@ const Finance=()=> {
             selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
             selectedTextStyle={{color: globalColors.lightBlack}}
             />
-        </View>
       )
     }
 
@@ -204,7 +187,7 @@ const Finance=()=> {
         <SafeAreaView style={{flex:1}}>
           <TopHeader title={"Finance"}/>
         </SafeAreaView>
-        <TopPickers/>
+          <TopPickers/>
         <ScrollView style={{paddingTop:12}} nestedScrollEnabled={true}>
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>

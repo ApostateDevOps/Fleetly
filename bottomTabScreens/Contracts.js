@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import {globalColors, globalFonts} from '../styles'
 import TopHeader from '../components/TopHeader'
 import TopPickers from '../components/TopPickers'
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Contracts=()=> {
     return (

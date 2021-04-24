@@ -22,17 +22,25 @@ export default function TopPickers() {
 const localStyles = StyleSheet.create({
     pickersContainer:{
         flexDirection:'row',
-        paddingTop:5,
+        paddingTop:10,
         paddingBottom:15,
         justifyContent:'center',
         borderColor:'lightgrey',
         borderBottomWidth:1,
+        // backgroundColor:'rgb(242,242,242)',
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //   width: 0,
+        //   height: 4,
+        // },
+        // shadowOpacity: 0.22,
+        // shadowRadius: 2.22,
+        // elevation: 3,
     },
     soloPickerView:{
         flexDirection:'row',
         justifyContent:'center',
         paddingTop:4,
-        // backgroundColor:'lightgrey',
         borderWidth:1,
         borderColor:'darkgrey',
         marginHorizontal:10,

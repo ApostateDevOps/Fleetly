@@ -24,5 +24,14 @@ const localStyles=StyleSheet.create({
         height:45,
         borderColor:'lightgrey',
         borderBottomWidth:1,
+        // backgroundColor:'rgb(242,242,242)',
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //   width: 0,
+        //   height: 4,
+        // },
+        // shadowOpacity: 0.22,
+        // shadowRadius: 2.22,
+        // elevation: 3,
     }
 })

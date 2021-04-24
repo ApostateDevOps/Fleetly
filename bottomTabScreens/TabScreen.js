@@ -68,7 +68,16 @@ const TabScreen=(props)=> {
             inactiveTintColor: 'gray',
             style:{
                 height:'9.5%',
-                paddingTop:'1%'
+                paddingTop:'1%',
+                shadowColor: "#000",
+                shadowOffset: {
+                    width: 0,
+                    height: 5,
+                },
+                shadowOpacity: 0.34,
+                shadowRadius: 6.27,
+                
+                elevation: 10,
             },
             labelStyle:{
                 fontFamily: globalFonts.medium,
