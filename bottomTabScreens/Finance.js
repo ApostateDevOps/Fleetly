@@ -52,7 +52,7 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 
 const Finance=()=> {
     
-    function topHeader(){
+    function TopHeader(){
       return(
           <View style={financeStyles.topHeader}>
             <Text style={{fontFamily:globalFonts.semibold, fontSize:17, color: globalColors.lightBlack}}>Finance</Text>
@@ -60,7 +60,7 @@ const Finance=()=> {
           )
     }
 
-    function topPickers(){
+    function TopPickers(){
       return(
         <View style={financeStyles.pickersContainer}>
           <TouchableOpacity style={financeStyles.soloPickerView}>
@@ -75,7 +75,7 @@ const Finance=()=> {
       )
     }
 
-    function summaryTop(){
+    function SummaryTop(){
       return(
         <View style={financeStyles.summaryTop}>
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
@@ -90,7 +90,7 @@ const Finance=()=> {
       )
     }
 
-    function summaryChart(){
+    function SummaryChart(){
       // const [graphicData, setGraphicData]=useState(defaultChartData);
       // useEffect(()=>{
       //   setGraphicData(chartData);
@@ -121,10 +121,9 @@ const Finance=()=> {
         </VictoryChart>
       )
     }
-
+    const [selectedIndex, setSelectedIndex]= useState(0)
     function buttonGroup(){
       const buttons=['Expenses', 'Income']
-      const [selectedIndex, setSelectedIndex]= useState(0)
       return(
           <View>
           <ButtonGroup 
@@ -137,16 +136,11 @@ const Finance=()=> {
             selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
             selectedTextStyle={{color: globalColors.lightBlack}}
             />
-
-          {pieChart(selectedIndex)}
-          <View style={{paddingVertical:15}}>
-            {categoriesList(selectedIndex)}
-          </View>
         </View>
       )
     }
 
-    function pieChart(selectedIndex){
+    function PieChart(){
       return(
         <VictoryPie
           height={300}
@@ -166,12 +160,12 @@ const Finance=()=> {
             }
           }}
           labels={({datum})=>selectedIndex==0 ? `${Math.round(datum.value/totalData.totalExpenses*100)}%` : `${Math.round(datum.value/totalData.totalIncome*100)}%`}
-          animate={{easing:"exp"}}
+          // animate={{easing:"exp"}}
         />
       )
     }
 
-    function categoriesList(selectedIndex){
+    function CategoriesList(){
 
       function CategoryElement(el){
         return(
@@ -215,21 +209,23 @@ const Finance=()=> {
     return (
       <View style={{flex:1}}>
         <SafeAreaView style={{flex:1}}>
-          {topHeader()}
+          <TopHeader/>
         </SafeAreaView>
-          {topPickers()}
+          <TopPickers/>
         <ScrollView style={{paddingTop:12}} nestedScrollEnabled={true}>
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>
-            {summaryTop()}
-            {summaryChart()}
+            <SummaryTop/>
+            <SummaryChart/>
           </View>
 
           <View style={financeStyles.categoriesContainer}>
             <Text style={financeStyles.sectionHeader}>Categories</Text>
             {buttonGroup()}
-            {/* pieChart in buttonGroup */}
-            {/* categoriesList in buttonGroup */}
+            <PieChart/>
+            <View style={{paddingVertical:15}}>
+              <CategoriesList/>
+            </View>
           </View>
         </ScrollView>
       </View>
