@@ -3,6 +3,8 @@ const {StyleSheet} = require ("react-native")
 const globalColors={
     mainColor:"#ec1817",
     // mainColor:"skyblue",
+    rootLight:"rgb(242,242,242)",
+    buttonLightGrey:'#dbdbdbdb',
     lightBlack:"#282828",
     expenses:"rgb(255,80,102)",
     income:"rgb(67,203,149)"
@@ -158,15 +160,24 @@ const financeStyles=StyleSheet.create({
     },
     summaryTop:{
         flexDirection:'row',
-        justifyContent:'center',
         alignItems:'center',
         marginTop:25,
-        marginBottom:20
+        marginBottom:20,
+    },
+    summaryChartContainer:{
+        // backgroundColor:'white', 
+        // borderRadius:10, 
+        // marginHorizontal:10,
+        marginBottom:25
     },
     categoryElement:{
         flexDirection:'row',
-        height:50
-        // backgroundColor:'lightblue',
+        height:50,
+        // backgroundColor:globalColors.buttonLightGrey,
+        backgroundColor:'white',
+        marginVertical:6,
+        marginHorizontal:10,
+        borderRadius:20
     }
 })
 export {financeStyles}

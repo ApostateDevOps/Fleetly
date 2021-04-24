@@ -56,11 +56,11 @@ const Finance=()=> {
     function SummaryTop(){
       return(
         <View style={financeStyles.summaryTop}>
-        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        <View style={{flex:1, height:90 ,justifyContent:'center', alignItems:'center', backgroundColor:'white', borderRadius:15, marginHorizontal:10}}>
           <Text style={{color: globalColors.income, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{totalData.totalIncome} {totalData.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>INCOME</Text>
         </View>
-        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        <View style={{flex:1, height:90 ,justifyContent:'center', alignItems:'center', backgroundColor:'white', borderRadius:15, marginHorizontal:10}}>
           <Text style={{color: globalColors.expenses, fontFamily:globalFonts.medium, fontSize:25, textAlign:'right'}}>{totalData.totalExpenses} {totalData.currency}</Text>
           <Text style={{color: globalColors.lightBlack, fontFamily:globalFonts.regular}}>EXPENSES</Text>
         </View>
@@ -74,7 +74,8 @@ const Finance=()=> {
       //   setGraphicData(chartData);
       // },[])
       return(
-        <VictoryChart height={200} width={screenWidth} padding={{left:90, top:45, bottom:45, right:90}} theme={VictoryTheme.material}>
+        <View style={financeStyles.summaryChartContainer}>
+        <VictoryChart height={200} width={screenWidth-20} padding={{left:90, top:45, bottom:45, right:90}} theme={VictoryTheme.material}>
           <VictoryAxis style={{axis:{stroke:"transparent"}, ticks:{stroke:"transparent"}}}/>
           {/* tickLabels:{fill:'transparent'} */}
           <VictoryBar
@@ -97,6 +98,7 @@ const Finance=()=> {
             }}
             />
         </VictoryChart>
+        </View>
       )
     }
     const [selectedIndex, setSelectedIndex]= useState(0)
@@ -107,10 +109,10 @@ const Finance=()=> {
             onPress={(newSelectedIndex)=>setSelectedIndex(newSelectedIndex)}
             selectedIndex={selectedIndex}
             buttons={buttons}
-            containerStyle={{height:55, marginHorizontal:45, marginVertical:25, backgroundColor:'#dbdbdbdb', borderWidth:2, borderColor:'#dbdbdbdb' ,borderRadius:15}}
+            containerStyle={{height:55, marginHorizontal:45, marginVertical:25, backgroundColor:globalColors.buttonLightGrey, borderWidth:2, borderColor:globalColors.rootLight ,borderRadius:15}}
             innerBorderStyle={{width:0}}
             buttonStyle={{backgroundColor:'transparent'}}
-            selectedButtonStyle={{backgroundColor:'rgb(242,242,242)', borderRadius:13}}
+            selectedButtonStyle={{backgroundColor:'white', borderRadius:13}}
             selectedTextStyle={{color: globalColors.lightBlack}}
             />
       )
@@ -118,26 +120,26 @@ const Finance=()=> {
 
     function PieChart(){
       return(
-        <VictoryPie
-          height={300}
-          width={screenWidth}
-          data={selectedIndex==0 ? pieData.expenses : pieData.income}
-          x="category"
-          y="value"
-          innerRadius={55}
-          style={{
-            data:{
-              fill:({datum})=>datum.color
-            },
-            labels:{
-              fontWeight:'400',
-              fontSize:15,
-              fill:({datum})=>datum.color
-            }
-          }}
-          labels={({datum})=>selectedIndex==0 ? `${Math.round(datum.value/totalData.totalExpenses*100)}%` : `${Math.round(datum.value/totalData.totalIncome*100)}%`}
-          // animate={{easing:"exp"}}
-        />
+          <VictoryPie
+            height={300}
+            width={screenWidth}
+            data={selectedIndex==0 ? pieData.expenses : pieData.income}
+            x="category"
+            y="value"
+            innerRadius={55}
+            style={{
+              data:{
+                fill:({datum})=>datum.color
+              },
+              labels:{
+                fontWeight:'400',
+                fontSize:15,
+                fill:({datum})=>datum.color
+              }
+            }}
+            labels={({datum})=>selectedIndex==0 ? `${Math.round(datum.value/totalData.totalExpenses*100)}%` : `${Math.round(datum.value/totalData.totalIncome*100)}%`}
+            // animate={{easing:"exp"}}
+            />
       )
     }
 
@@ -145,13 +147,13 @@ const Finance=()=> {
 
       function CategoryElement(el){
         return(
-        <TouchableHighlight onPress={()=>alert("tap")} activeOpacity={0.7} underlayColor="lightgrey">
+        <TouchableHighlight onPress={()=>alert("tap")} activeOpacity={0.7} underlayColor={globalColors.rootLight}>
         <View style={financeStyles.categoryElement}>
           <View style={{justifyContent:'center', marginLeft:5}}>
             <View style={{backgroundColor:el.element.color,height:22, width:22, borderRadius:45, marginHorizontal:15}}></View>
           </View>
           <View style={{flex:1, justifyContent:'center'}}>
-            <Text style={{fontFamily:globalFonts.regular, fontSize:15, }}>{el.element.category}</Text>
+            <Text style={{fontFamily:globalFonts.medium, fontSize:15,}}>{el.element.category}</Text>
           </View>
           <View style={{justifyContent:'center', marginHorizontal:15}}>
             <Text style={{fontFamily:globalFonts.regular, fontSize:15, color:selectedIndex==0 ? globalColors.expenses: globalColors.income}}> {selectedIndex==0 ? -el.element.value : el.element.value} {totalData.currency}</Text>

@@ -46,6 +46,6 @@ const localStyles = StyleSheet.create({
         marginHorizontal:10,
         height:30,
         width:80,
-        borderRadius:45
+        borderRadius:45,
     },
 })
