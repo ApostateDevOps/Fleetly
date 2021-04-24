@@ -101,13 +101,6 @@ signUp:{
 export {loginStyles}
 
 const moreStyles=StyleSheet.create({
-    topHeader:{
-        alignItems:'center',
-        justifyContent:'center',
-        height:45,
-        borderColor:'lightgrey',
-        borderBottomWidth:1,
-    },
     item:{
         // backgroundColor: 'red',
         paddingHorizontal:15,
@@ -151,31 +144,6 @@ const moreStyles=StyleSheet.create({
 export {moreStyles}
 
 const financeStyles=StyleSheet.create({
-    topHeader:{
-        alignItems:'center',
-        justifyContent:'center',
-        height:45,
-    },
-    pickersContainer:{
-        flexDirection:'row',
-        paddingTop:5,
-        paddingBottom:15,
-        justifyContent:'center',
-        borderColor:'lightgrey',
-        borderBottomWidth:1,
-    },
-    soloPickerView:{
-        flexDirection:'row',
-        justifyContent:'center',
-        paddingTop:4,
-        // backgroundColor:'lightgrey',
-        borderWidth:1,
-        borderColor:'darkgrey',
-        marginHorizontal:10,
-        height:30,
-        width:80,
-        borderRadius:45
-    },
     summaryContainer:{
         marginTop:10
     },
@@ -202,3 +170,8 @@ const financeStyles=StyleSheet.create({
     }
 })
 export {financeStyles}
+
+const contractStyles=StyleSheet.create({
+
+})
+export {contractStyles}

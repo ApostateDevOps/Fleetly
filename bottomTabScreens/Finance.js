@@ -1,4 +1,3 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { Component, useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { View, Text, Dimensions } from 'react-native';
@@ -7,6 +6,8 @@ import { ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native-g
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {VictoryChart, VictoryBar, VictoryTheme, VictoryAxis, VictoryGroup, VictoryLabel, VictoryPie} from "victory-native";
 import {financeStyles, globalColors, globalFonts} from '../styles';
+import TopHeader from '../components/TopHeader'
+import TopPickers from '../components/TopPickers'
 
 // redux
 function sumTotal(arr){
@@ -51,29 +52,21 @@ const chartData=[
 const screenWidth = Math.round(Dimensions.get('window').width);
 
 const Finance=()=> {
-    
-    function TopHeader(){
-      return(
-          <View style={financeStyles.topHeader}>
-            <Text style={{fontFamily:globalFonts.semibold, fontSize:17, color: globalColors.lightBlack}}>Finance</Text>
-          </View>
-          )
-    }
 
-    function TopPickers(){
-      return(
-        <View style={financeStyles.pickersContainer}>
-          <TouchableOpacity style={financeStyles.soloPickerView}>
-            <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All cars</Text>
-            <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={financeStyles.soloPickerView}>
-            <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All time</Text>
-            <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
-          </TouchableOpacity>
-        </View>
-      )
-    }
+    // function TopPickers(){
+    //   return(
+    //     <View style={financeStyles.pickersContainer}>
+    //       <TouchableOpacity style={financeStyles.soloPickerView}>
+    //         <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All cars</Text>
+    //         <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
+    //       </TouchableOpacity>
+    //       <TouchableOpacity style={financeStyles.soloPickerView}>
+    //         <Text style={{paddingLeft:5, color: globalColors.lightBlack, fontFamily:globalFonts.light}}>All time</Text>
+    //         <MaterialCommunityIcons name={'chevron-down'} size={15} color={ globalColors.lightBlack} style={{paddingTop:2}}/>
+    //       </TouchableOpacity>
+    //     </View>
+    //   )
+    // }
 
     function SummaryTop(){
       return(
@@ -209,9 +202,9 @@ const Finance=()=> {
     return (
       <View style={{flex:1}}>
         <SafeAreaView style={{flex:1}}>
-          <TopHeader/>
+          <TopHeader title={"Finance"}/>
         </SafeAreaView>
-          <TopPickers/>
+        <TopPickers/>
         <ScrollView style={{paddingTop:12}} nestedScrollEnabled={true}>
           <View style={financeStyles.summaryContainer}>
             <Text style={financeStyles.sectionHeader}>Summary</Text>

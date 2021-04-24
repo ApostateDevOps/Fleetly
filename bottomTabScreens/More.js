@@ -4,6 +4,7 @@ import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handl
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import {globalColors, globalFonts, moreStyles} from '../styles';
 import MyButton from '../MyButton';
+import TopHeader from '../components/TopHeader'
 
 const initialList=[
   {
@@ -77,9 +78,7 @@ const More=()=> {
   )
   return (
       <SafeAreaView style={{flex: 1}}>
-        <View style={moreStyles.topHeader}>
-          <Text style={{fontFamily:globalFonts.semibold, fontSize:17, color: globalColors.lightBlack}}>More</Text>
-        </View>
+        <TopHeader title={"More"}/>
         <SectionList
         sections={list} 
         keyExtractor={(item,index)=>item.info+index}
